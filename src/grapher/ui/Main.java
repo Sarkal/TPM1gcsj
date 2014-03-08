@@ -42,7 +42,7 @@ public class Main extends JFrame {
 		add.setAccelerator(KeyStroke.getKeyStroke(
 				KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		remove.setAccelerator(KeyStroke.getKeyStroke(
-				KeyEvent.VK_BACK_SPACE, ActionEvent.CTRL_MASK));
+				KeyEvent.VK_DELETE, 0));
 		expr.add(add);
 		expr.add(remove);
 		menuBar.add(expr);
