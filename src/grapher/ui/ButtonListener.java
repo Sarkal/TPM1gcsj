@@ -24,12 +24,14 @@ public class ButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		switch (arg0.getActionCommand()) {
 		case "+":
+		case "Add":
 			JOptionPane box = new JOptionPane();
-			String inputValue = JOptionPane.showInputDialog("Nouvelle expression :"); 
-			g.add(inputValue);
+			String inputValue = JOptionPane.showInputDialog("Nouvelle expression :");
+			if (inputValue != null)
+				g.add(inputValue);
 			break;
 		case "-":
-			System.out.println("You shall not stay, function");
+		case "Remove":
 			System.out.println((String)l.getSelectedValue());
 			g.del((String)l.getSelectedValue());
 			break;
