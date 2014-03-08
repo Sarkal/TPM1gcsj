@@ -1,6 +1,7 @@
 package grapher.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.DefaultListModel;
@@ -9,11 +10,12 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
 
+@SuppressWarnings("serial")
 public class Main extends JFrame {
-	@SuppressWarnings("unchecked")
 	Main(String title, String[] expressions) {
 		super(title);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -27,12 +29,13 @@ public class Main extends JFrame {
 		JButton bMinus = new JButton("-");
 		DefaultListModel<String> list = new DefaultListModel<String>();
 		
-		JList lFunc = new JList<String>(list);
-		
+		JList<String> lFunc = new JList<String>(list);
+		JTable jTableFunc = new JTable(new FunctionTable(expressions));
+		jTableFunc.setDefaultRenderer(Color.class, new ColorRenderer(true));
 		
 
 		jP.setLayout(new BorderLayout());
-		jP.add(lFunc, BorderLayout.CENTER);
+		jP.add(jTableFunc, BorderLayout.CENTER);
 		jP.add(jPBW, BorderLayout.SOUTH);
 		
 		jPBW.setLayout(new BorderLayout());

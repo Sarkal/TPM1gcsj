@@ -1,12 +1,8 @@
 package grapher.ui;
 
-import grapher.fc.Function;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
@@ -24,7 +20,6 @@ public class ButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		switch (arg0.getActionCommand()) {
 		case "+":
-			JOptionPane box = new JOptionPane();
 			String inputValue = JOptionPane.showInputDialog("Nouvelle expression :"); 
 			g.add(inputValue);
 			break;
