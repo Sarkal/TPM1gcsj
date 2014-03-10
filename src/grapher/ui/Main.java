@@ -9,14 +9,11 @@ import java.awt.event.KeyEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
@@ -42,8 +39,6 @@ public class Main extends JFrame {
 		JButton bPlus = new JButton("+");
 		JButton bMinus = new JButton("-");
 		DefaultListModel<String> list = new DefaultListModel<String>();
-		
-		JList<String> lFunc = new JList<String>(list);
 		
 		FunctionTable jTableFunc = new FunctionTable(this, new FunctionTableModel(this, list, expressions));
 		jTableFunc.setDefaultRenderer(Color.class, new ColorRenderer(true));
@@ -77,9 +72,7 @@ public class Main extends JFrame {
 		jPBW.add(jPB, BorderLayout.WEST);
 		jPBW.add(new JPanel(), BorderLayout.CENTER);
 
-		lFunc.addListSelectionListener(new ListListener(grapher));
-
-		ButtonListener bl = new ButtonListener(grapher, lFunc);
+		ButtonListener bl = new ButtonListener(grapher, jTableFunc);
 		bPlus.addActionListener(bl);
 		bMinus.addActionListener(bl);
 		add.addActionListener(bl);

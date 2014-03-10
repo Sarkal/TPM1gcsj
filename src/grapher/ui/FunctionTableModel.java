@@ -39,15 +39,30 @@ public class FunctionTableModel extends AbstractTableModel {
 		Object[][] temp = data;
 		data = new Object[data.length+1][2];
 		int i = 0;
-		for(Object[] o:temp)
+		for (i = 0; i < temp.length; i++)
 		{
 			data[i] = temp[i];
-			i++;
 		}
 		data[i][0] = name;
 		data[i][1] = color;
+		fireTableDataChanged();
 	}
-
+	
+	public void delRow(int num) {
+		int j = 0;
+		
+		Object[][] temp = data;
+		data = new Object[data.length-1][2];
+		for (int i = 0; i < temp.length; i++)
+		{
+			if (num != i) {
+				data[j] = temp[i];
+				j++;
+			}
+		}
+		fireTableDataChanged();
+	}
+	
 	public void addRow(String name) {
 		this.addRow(name, Color.BLACK);
 	}
