@@ -43,8 +43,6 @@ public class Main extends JFrame {
 		JButton bMinus = new JButton("-");
 		DefaultListModel<String> list = new DefaultListModel<String>();
 		
-		JList<String> lFunc = new JList<String>(list);
-		
 		JTable jTableFunc = new JTable(new FunctionTable(this, list, expressions));
 		jTableFunc.setDefaultRenderer(Color.class, new ColorRenderer(true));
 		jTableFunc.setDefaultEditor(Color.class, new ColorEditor());
@@ -77,9 +75,7 @@ public class Main extends JFrame {
 		jPBW.add(jPB, BorderLayout.WEST);
 		jPBW.add(new JPanel(), BorderLayout.CENTER);
 
-		lFunc.addListSelectionListener(new ListListener(grapher));
-
-		ButtonListener bl = new ButtonListener(grapher, lFunc);
+		ButtonListener bl = new ButtonListener(grapher, jTableFunc);
 		bPlus.addActionListener(bl);
 		bMinus.addActionListener(bl);
 		add.addActionListener(bl);
