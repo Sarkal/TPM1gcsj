@@ -148,8 +148,9 @@ public class Grapher extends JPanel{
 				int colSelected = jTableFunc.getSelectedColumn();
 
 				// Si la fonction a afficher correspond a la fonction selectionnee, on la dessine en gras
-				if (0 <= rowSelected && rowSelected < jTableFunc.getRowCount() && colSelected == 0 &&
-						f.toString().equals((String)jTableFunc.getValueAt(rowSelected, colSelected))) {
+				if (0 <= rowSelected && rowSelected < jTableFunc.getRowCount() && 
+						0 <= colSelected && colSelected < jTableFunc.getColumnCount() &&
+						f.toString().equals((String)jTableFunc.getValueAt(rowSelected, 0))) {
 					g2.setStroke(bold);
 				}
 
