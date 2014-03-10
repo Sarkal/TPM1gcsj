@@ -45,10 +45,10 @@ public class Main extends JFrame {
 		
 		JList<String> lFunc = new JList<String>(list);
 		
-		JTable jTableFunc = new JTable(new FunctionTable(this, list, expressions));
+		FunctionTable jTableFunc = new FunctionTable(this, new FunctionTableModel(this, list, expressions));
 		jTableFunc.setDefaultRenderer(Color.class, new ColorRenderer(true));
 		jTableFunc.setDefaultEditor(Color.class, new ColorEditor());
-
+		
 		grapher = new Grapher(list, jTableFunc);		
 		for(String expression : expressions) {
 			grapher.add(expression);

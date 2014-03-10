@@ -46,9 +46,9 @@ public class Grapher extends JPanel{
 	protected Vector<Function> functions;
 
 	private DefaultListModel<String> list;
-	private JTable jTableFunc;
+	private FunctionTable jTableFunc;
 
-	public Grapher(DefaultListModel<String> list, JTable jTableFunc) {
+	public Grapher(DefaultListModel<String> list, FunctionTable jTableFunc) {
 		xmin = -PI/2.; xmax = 3*PI/2;
 		ymin = -1.5;   ymax = 1.5;
 
