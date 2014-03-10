@@ -45,6 +45,7 @@ import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.table.TableCellRenderer;
 
+@SuppressWarnings("serial")
 public class ColorRenderer extends JLabel
                            implements TableCellRenderer {
     Border unselectedBorder = null;

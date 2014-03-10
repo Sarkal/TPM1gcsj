@@ -1,18 +1,19 @@
 package grapher.fc;
 
-import java.io.File;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLClassLoader;
 
 public class FunctionFactory {
 	static final String NAME = "DynamicFunction";
 	static final String PATH = "dyna";
 	
-	public static Function createFunction(String expression) {
+	@SuppressWarnings("deprecation")
+	public static Function createFunction(String expression) throws RuntimeException {
 		File temp = new File(NAME + ".java");
 		temp.delete();
 		try { 
@@ -28,7 +29,7 @@ public class FunctionFactory {
 			out.write("}\n");
 			out.close();
 		}
-		catch(IOException e) { 
+		catch(IOException e) {
 			throw new RuntimeException("unable to create file."); 
 		}
 		

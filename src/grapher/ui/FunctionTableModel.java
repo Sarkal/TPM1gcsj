@@ -1,7 +1,5 @@
 package grapher.ui;
 
-import grapher.fc.FunctionFactory;
-
 import java.awt.Color;
 
 import javax.swing.DefaultListModel;
@@ -11,7 +9,6 @@ import javax.swing.table.AbstractTableModel;
 public class FunctionTableModel extends AbstractTableModel {
 	private String[] columnNames = {"Function",	"Color"};
 	private Object[][] data;
-	private Grapher g;
 	private DefaultListModel<String> list;
 	private Main main;
 	public FunctionTableModel(Main main, DefaultListModel<String> list, String[] expressions) {
@@ -85,6 +82,7 @@ public class FunctionTableModel extends AbstractTableModel {
 	 * then the last column would contain text ("true"/"false"),
 	 * rather than a check box.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Class getColumnClass(int c) {
 		return getValueAt(0, c).getClass();
 	}
@@ -95,6 +93,7 @@ public class FunctionTableModel extends AbstractTableModel {
 		return true;
 	}
 
+	@SuppressWarnings("unused")
 	private void printDebugData() {
 		int numRows = getRowCount();
 		int numCols = getColumnCount();
@@ -118,8 +117,11 @@ public class FunctionTableModel extends AbstractTableModel {
 	}
 
 	public void setValueAt(Object value, int row, int col) {
+		int error = 0;
 		if (col == 0) {
-			main.grapher.functions.add(FunctionFactory.createFunction((String) value));
+			error = main.grapher.add((String) value);
+			if (error == -1)
+				return;
 			list.removeElement((String)data[row][col]);
 			list.addElement((String) value);
 		}

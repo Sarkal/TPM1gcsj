@@ -20,11 +20,12 @@ import java.awt.Point;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 
+@SuppressWarnings("serial")
 public class Grapher extends JPanel{
 	static final int MARGIN = 40;
 	static final int STEP = 15;
@@ -62,9 +63,17 @@ public class Grapher extends JPanel{
 		this.jTableFunc = jTableFunc;
 	}
 
-	public void add(String expression) {
-		add(FunctionFactory.createFunction(expression));
+	public int add(String expression) {
+		try {
+			add(FunctionFactory.createFunction(expression));
+		}
+		catch (RuntimeException e) {
+			System.out.println("impossible de creer la fonction " + expression);
+			JOptionPane.showMessageDialog(null, "Impossible de creer la fonction " + expression + ".", "Error", JOptionPane.WARNING_MESSAGE);
+			return -1;
+		}
 		repaint();
+		return 0;
 	}
 
 	public void add(Function function) {
@@ -163,7 +172,7 @@ public class Grapher extends JPanel{
 				if (i >= jTableFunc.getRowCount())
 					g2.setColor(Color.BLACK);
 				else {
-					g2.setColor((Color)jTableFunc.getModel().getValueAt(i, 1));
+					g2.setColor((Color)model.getValueAt(i, 1));
 				}
 
 				g2.drawPolyline(Xs, Ys, N);
