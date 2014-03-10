@@ -30,6 +30,14 @@ public class ButtonListener implements ActionListener {
 			System.out.println((String)l.getSelectedValue());
 			g.del((String)l.getSelectedValue());
 			break;
+		case "Color...":
+			if (!l.isSelectionEmpty()) {
+				
+			}
+			break;
+		case "Modify...":
+			System.out.println("Modify...");
+			break;
 		}
 		
 	}
