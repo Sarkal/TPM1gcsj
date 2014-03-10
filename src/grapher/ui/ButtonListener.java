@@ -27,8 +27,8 @@ public class ButtonListener implements ActionListener {
 			System.out.println("add");
 			String inputValue = JOptionPane.showInputDialog("Nouvelle expression :");
 			if (inputValue != null) {
-				ft.addRow(inputValue, Color.black);
-				g.add(inputValue);
+				if (g.add(inputValue) != -1)
+					ft.addRow(inputValue, Color.black);
 			}
 			g.repaint();
 			break;
@@ -45,14 +45,6 @@ public class ButtonListener implements ActionListener {
 				g.del(name);
 				g.repaint();
 			}
-			break;
-		case "Color...":
-//			if (!t.isSelectionEmpty()) {
-//				
-//			}
-			break;
-		case "Modify...":
-			System.out.println("Modify...");
 			break;
 		}
 		

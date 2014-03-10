@@ -12,7 +12,7 @@ public class FunctionFactory {
 	static final String NAME = "DynamicFunction";
 	static final String PATH = "dyna";
 	
-	public static Function createFunction(String expression) {
+	public static Function createFunction(String expression) throws RuntimeException {
 		File temp = new File(NAME + ".java");
 		temp.delete();
 		try { 
@@ -28,7 +28,7 @@ public class FunctionFactory {
 			out.write("}\n");
 			out.close();
 		}
-		catch(IOException e) { 
+		catch(IOException e) {
 			throw new RuntimeException("unable to create file."); 
 		}
 		

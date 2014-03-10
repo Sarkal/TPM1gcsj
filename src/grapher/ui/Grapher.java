@@ -62,9 +62,16 @@ public class Grapher extends JPanel{
 		this.jTableFunc = jTableFunc;
 	}
 
-	public void add(String expression) {
-		add(FunctionFactory.createFunction(expression));
+	public int add(String expression) {
+		try {
+			add(FunctionFactory.createFunction(expression));
+		}
+		catch (RuntimeException e) {
+			System.out.println("impossible de creer la fonction " + expression);
+			return -1;
+		}
 		repaint();
+		return 0;
 	}
 
 	public void add(Function function) {

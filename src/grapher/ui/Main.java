@@ -32,8 +32,6 @@ public class Main extends JFrame {
 		JMenu expr = new JMenu("Expression");
 		JMenuItem add = new JMenuItem("Add");
 		JMenuItem remove = new JMenuItem("Remove");
-		JMenuItem color = new JMenuItem("Color...");
-		JMenuItem modify = new JMenuItem("Modify...");
 		
 		JSplitPane jSP;
 		JPanel jP = new JPanel();
@@ -58,8 +56,6 @@ public class Main extends JFrame {
 				KeyEvent.VK_DELETE, 0));
 		expr.add(add);
 		expr.add(remove);
-		expr.add(color);
-		expr.add(modify);
 		menuBar.add(expr);
 		setJMenuBar(menuBar);
 
@@ -80,8 +76,6 @@ public class Main extends JFrame {
 		bMinus.addActionListener(bl);
 		add.addActionListener(bl);
 		remove.addActionListener(bl);
-		color.addActionListener(bl);
-		modify.addActionListener(bl);
 
 		jSP = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, jP, grapher);
 		this.add(jSP);
